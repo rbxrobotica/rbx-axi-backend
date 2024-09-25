@@ -1,0 +1,7 @@
+### Teste da rota get_axie_name com POST
+POST http://localhost:8000/axie-name/
+Content-Type: application/json
+
+{
+  "axieId": "11050871"
+}
