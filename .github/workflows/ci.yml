@@ -24,8 +24,7 @@ jobs:
           file: ./docker/Dockerfile_django
           push: true
           tags: | 
-            rbxrobotica/axie-backend-django-prod:1.0.${{github.run_number}}
-            rbxrobotica/axie-backend-django-prod:latest
+            ldamasio/axie-backend-django-prod:latest
         env:
           ACTIONS_RUNNER_DEBUG: true
           ACTIONS_STEP_DEBUG: true
@@ -37,5 +36,4 @@ jobs:
           file: ./docker/Dockerfile_nginx
           push: true
           tags: | 
-            rbxrobotica/axie-backend-nginx-prod:1.0.${{github.run_number}}
-            rbxrobotica/axie-backend-nginx-prod:latest
+            ldamasio/axie-backend-nginx-prod:latest
