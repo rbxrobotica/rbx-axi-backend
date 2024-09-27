@@ -129,5 +129,5 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
    "https://axie.rbxrobotica.com.br/",
-   "https://https://api-axie.rbxrobotica.com.br",
+   "https://api-axie.rbxrobotica.com.br",
 ]
