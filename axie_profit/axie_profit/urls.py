@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('axie_app.urls')),  
+    path('', include('axie.urls')),
+    # path('axie/', include('axie.urls')),  
 
 ]

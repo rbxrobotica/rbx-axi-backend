@@ -7,7 +7,7 @@ config = AutoConfig(search_path=BASE_DIR)
 API_KEY = config('API_KEY')
 API_URL = config('API_URL')
 
-SECRET_KEY = 'django-insecure-a_laq6v9_@^^t4h8(pot#!7i#$n4p+o675ep-^a^+z*__qpomd'
+SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = True
 
@@ -24,7 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'axie_app',
+    'axie',
+    'config',
 
 ]
 
@@ -38,7 +39,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'axie_finder.urls'
+ROOT_URLCONF = 'axie.urls'
 
 TEMPLATES = [
     {
@@ -56,7 +57,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'axie_finder.wsgi.application'
+WSGI_APPLICATION = 'axie_profit.wsgi.application'
 
 
 # Database
@@ -64,8 +65,15 @@ WSGI_APPLICATION = 'axie_finder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('POSTGRES_DATABASE'),
+        'USER': config('POSTGRES_USER'),
+        'PASSWORD': config('POSTGRES_PASSWORD'),
+        'HOST': config('POSTGRES_HOST'),
+        'PORT': config('POSTGRES_PORT'),
+        'OPTIONS': {
+            'options': '-c search_path=axieschema'
+        }
     }
 }
 

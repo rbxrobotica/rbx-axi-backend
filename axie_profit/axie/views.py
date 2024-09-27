@@ -1,7 +1,6 @@
 import requests
 from django.shortcuts import render
 from .models import Axie
-from .forms import AxieFilterForm
 from django.conf import settings
 
 from django.http import JsonResponse
@@ -38,26 +37,26 @@ def home(request):
     return JsonResponse(data)
 
 
-def find_axies(request):
+# def find_axies(request):
 
-    form = AxieFilterForm(request.POST or None)
-    if form.is_valid():
-        max_level = form.cleaned_data['max_level']
-        query = """
-        query getAxies($maxLevel: Int) {
-            axies(where: { level: { _lte: $maxLevel } }) {
-                id
-                name
-                level
-            }
-        }
-        """
-        variables = {'maxLevel': max_level}
-        response = requests.post('https://api.axieinfinity.com/graphql',
-                            headers={'x-api-key': API_KEY},
-                            json={'query': query, 'variables': variables})
-        data = response.json()['data']['axies']
-        for axie_data in data:
-            Axie.objects.create(**axie_data)
-    axies = Axie.objects.all()
-    return render(request, 'axie_app/axie_list.html', {'axies': axies, 'form': form})
+#     form = AxieFilterForm(request.POST or None)
+#     if form.is_valid():
+#         max_level = form.cleaned_data['max_level']
+#         query = """
+#         query getAxies($maxLevel: Int) {
+#             axies(where: { level: { _lte: $maxLevel } }) {
+#                 id
+#                 name
+#                 level
+#             }
+#         }
+#         """
+#         variables = {'maxLevel': max_level}
+#         response = requests.post('https://api.axieinfinity.com/graphql',
+#                             headers={'x-api-key': API_KEY},
+#                             json={'query': query, 'variables': variables})
+#         data = response.json()['data']['axies']
+#         for axie_data in data:
+#             Axie.objects.create(**axie_data)
+#     axies = Axie.objects.all()
+#     return render(request, 'axie_app/axie_list.html', {'axies': axies, 'form': form})
