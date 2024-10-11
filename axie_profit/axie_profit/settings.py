@@ -27,11 +27,14 @@ INSTALLED_APPS = [
     'axie',
     'config',
 
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -121,8 +124,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CORS_ALLOWED_ORIGINS = [
-    "https://axie.rbxrobotica.com.br/",
+    "https://axie.rbxrobotica.com.br",
     "https://api-axie.rbxrobotica.com.br",
+    "http://localhost:3000",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
